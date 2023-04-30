@@ -1,0 +1,70 @@
+
+
+.FormGeneral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: #f7f7f7;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  padding: 50px 100px 50px 100px;
+  margin: 50px 400px 50px 400px;
+  color: white;
+  background-color: #23272a;
+}
+
+.imagenForm {
+  width: 100%;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  border: 2px solid #dddddd;
+  font-size: 1.2rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #0077ff;
+}
+
+button[type="submit"] {
+  border-radius: 50px;
+  width: 300px;
+  height: 50px;
+  background-color: #61dbfb;
+  color: #2a5f6d;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+button[type="submit"]:hover {
+  background-color: #6cf448;
+  border: #6cf448;
+  box-shadow: 0 0 10px 5px #6cf448;
+  color: #337422;
+}
+
+.danger {
+  color: rgb(201, 119, 119);
+  font-size: 1rem;
+}
