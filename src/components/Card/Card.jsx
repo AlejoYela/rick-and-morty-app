@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { addFav, removeFav } from "../../redux/actions";
+import { connect } from "react-redux";
+import { useState, useEffect } from "react";
 
 const CajaPrincipal = styled.div`
   position: relative;
@@ -55,8 +58,8 @@ const CajaPrincipal = styled.div`
 
   .boton-cerrar {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 10px;
     width: 30px;
     height: 30px;
     background-color: #f44336;
@@ -71,15 +74,64 @@ const CajaPrincipal = styled.div`
     background-color: #f44336;
   }
 
-  .Link{
+  .Link {
     text-decoration: none;
     color: #9bd4e4;
   }
 `;
 
-export default function Card(props) {
+const ContenedorIconoFav = styled.div`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 999;
+
+  button {
+    background-color: transparent;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+`;
+
+function Card(props) {
+  const [isFav, setIsFav] = useState(false);
+
+  const handleFavorite = (event) => {
+    event.preventDefault();
+    if (isFav) {
+      setIsFav(false);
+      props.removeFav(props.id);
+    } else {
+      setIsFav(true);
+      props.addFav(props);
+    }
+  };
+
+  useEffect(() => {
+    props.myFavorites.forEach((fav) => {
+       if (fav.id === props.id) {
+          setIsFav(true);
+       }
+    });
+ }, [props.myFavorites]);
+
   return (
     <CajaPrincipal status={props.status}>
+      <ContenedorIconoFav>
+        {isFav ? (
+          <button onClick={handleFavorite}>❤️</button>
+        ) : (
+          <button onClick={handleFavorite}>🤍</button>
+        )}
+      </ContenedorIconoFav>
+
       <button className="boton-cerrar" onClick={() => props.onClose(props.id)}>
         X
       </button>
@@ -98,3 +150,18 @@ export default function Card(props) {
     </CajaPrincipal>
   );
 }
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    addFav: (char) => dispatch(addFav(char)),
+    removeFav: (id) => dispatch(removeFav(id)),
+  };
+}
+
+export function mapStateToProps(state){
+  return {
+    myFavorites: state.myFavorites,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card);

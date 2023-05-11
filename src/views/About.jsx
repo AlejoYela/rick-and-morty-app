@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const CajaPrincipal = styled.div`
-margin: 20px;
+  margin: 20px;
   display: grid;
   color: white;
   background-color: #23272a;
@@ -64,7 +64,7 @@ const Creador = styled.div`
   p {
     font-size: 25px;
     color: white;
-    
+
     border-radius: 5px;
     padding: 20px;
     margin: 0;
@@ -73,6 +73,7 @@ const Creador = styled.div`
 `;
 
 export default function About() {
+
   return (
     <CajaPrincipal>
       <Texto>
@@ -95,7 +96,7 @@ export default function About() {
         </Descripcion>
         <hr />
       </Texto>
-        
+
       <Creador>
         <h2>Creado por:</h2>
         <p>Alejandro Yela, desarrollador de software.</p>

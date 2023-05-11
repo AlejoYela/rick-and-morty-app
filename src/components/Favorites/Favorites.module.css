@@ -1,0 +1,15 @@
+.cajaPrincipal {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 320px);
+  grid-gap: 20px;
+  background-color: #181818;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 20px;
+  justify-content: center;
+  color: white;
+}
+
+h1 {
+  color: white;
+}
