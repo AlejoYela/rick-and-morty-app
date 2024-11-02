@@ -115,12 +115,10 @@ function Card(props) {
   };
 
   useEffect(() => {
-    props.myFavorites.forEach((fav) => {
-       if (fav.id === props.id) {
-          setIsFav(true);
-       }
-    });
- }, [props.myFavorites]);
+    // Verificar si 'props.id' está en 'myFavorites'
+    const isFavorite = props.myFavorites.some((fav) => fav.id === props.id);
+    setIsFav(isFavorite);
+ }, [props.myFavorites, props.id]); // Incluir 'props.id' aquí 
 
   return (
     <CajaPrincipal status={props.status}>

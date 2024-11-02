@@ -51,7 +51,8 @@ function App() {
 
    useEffect(() => {
       !access && navigate('/');
-   }, [access]);
+   }, [access, navigate]); // Incluir 'navigate' aquí
+   
 
    return (
       <div className='App background'>
